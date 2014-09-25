@@ -1,0 +1,29 @@
+<%= form_for(@corgi) do |f| %>
+  <% if @corgi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@corgi.errors.count, "error") %> prohibited this corgi from being saved:</h2>
+
+      <ul>
+      <% @corgi.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_img %><br>
+    <%= f.text_field :profile_img %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<div class="clearfix">
+  <div class="corgi-container" id="misses">
+    <h2>Thanks, but No Thanks</h2>
+    <ul>
+
+    </ul>
+  </div>
+
+  <div class="corgi-container" id="candidates">
+
+    <ul>
+
+      <% @corgis.each_with_index do |corgi, i| %>
+        <li class="corgi <%= (i == 0) ? 'active' : 'hidden' %>">
+          <h3><%= corgi.name %></h3>
+          <%= image_tag corgi.profile_img, :class => "pic" %>
+          <p class="bio"><%= corgi.bio %></p>
+        </li>
+      <% end %>
+
+    </ul>
+
+    <button class="choose-corgi" id="paw-left">Paw Left (No, Thanks)</button>
+    <button class="choose-corgi" id="paw-right">Paw Right (Yes, Please!)</button>
+
+  </div>
+
+  <div class="corgi-container" id="matches">
+    <h2>Matches!</h2>
+    <ul>
+
+    </ul>
+  </div>
+</div>
+<div>
+  <%= link_to 'New Corgi', new_corgi_path %>
+</div>

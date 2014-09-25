@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @corgi.name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @corgi.bio %>
+</p>
+
+<p>
+  <strong>Profile img:</strong>
+  <%= image_tag @corgi.profile_img %>
+</p>
+
+<p>
+  <strong>Match?:</strong>
+  <%= @corgi.match %>
+</p>
+
+<%= link_to 'Edit', edit_corgi_path(@corgi) %> |
+<%= link_to 'Back', corgis_path %>
