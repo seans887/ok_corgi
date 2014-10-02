@@ -26,18 +26,32 @@ var OkCorgiApp = function() {
     currentCorgiEl.remove();
   }
 
-  // When paw right is clicked
+  // When either paw is clicked
   $(".choose-corgi").on("click", function() {
 
     var elId = $(this).attr("id");
-    var containerSelector = "";
+    var activeCorgiId = $("li.active").data("corgi-id");
+    var containerSelector,
+        matchData;
 
     if (elId === "paw-left") {
       containerSelector = "#misses";
+      matchData = false;
     }
     else {
       containerSelector = "#matches";
+      matchData = true;
     }
+
+    $.ajax({
+      type: "PATCH",
+      url: "/corgis/" + activeCorgiId,
+      data: { corgi: { match: matchData } },
+      dataType: "json",
+      success: function( data, textStatus, jqXHR ) {
+        console.log(data, textStatus, jqXHR);
+      }
+    });
 
     // Append thumbnail list item to the #matches list
     $(containerSelector + " ul").append(createCorgiThumbnail());

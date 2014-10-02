@@ -1,17 +1,19 @@
-<div class="clearfix">
-  <div class="corgi-container" id="misses">
+<div class="row">
+  <div class="small-4 columns" id="misses">
     <h2>Thanks, but No Thanks</h2>
     <ul>
-
+      <% @misses.each do |corgi| %>
+        <li class="corgi"><h4><%= corgi.name %></h4><img src="<%= corgi.profile_img %>" class="pic" /></li>
+      <% end %>
     </ul>
   </div>
 
-  <div class="corgi-container" id="candidates">
+  <div class="small-4 columns" id="candidates">
 
     <ul>
 
-      <% @corgis.each_with_index do |corgi, i| %>
-        <li class="corgi <%= (i == 0) ? 'active' : 'hidden' %>">
+      <% @candidates.each_with_index do |corgi, i| %>
+        <li class="corgi <%= (i == 0) ? 'active' : 'hidden' %>" data-corgi-id="<%= corgi.id %>">
           <h3><%= corgi.name %></h3>
           <%= image_tag corgi.profile_img, :class => "pic" %>
           <p class="bio"><%= corgi.bio %></p>
@@ -20,18 +22,23 @@
 
     </ul>
 
-    <button class="choose-corgi" id="paw-left">Paw Left (No, Thanks)</button>
-    <button class="choose-corgi" id="paw-right">Paw Right (Yes, Please!)</button>
+    <div class="row">
+      <button class="small-12 medium-6 columns choose-corgi" id="paw-left">Paw Left (No, Thanks)</button>
+      <button class="small-12 medium-6 columns choose-corgi" id="paw-right">Paw Right (Yes, Please!)</button>
+    </div>
 
   </div>
 
-  <div class="corgi-container" id="matches">
+  <div class="small-4 columns" id="matches">
     <h2>Matches!</h2>
     <ul>
-
+    <% @matches.each do |corgi| %>
+        <li class="corgi"><h4><%= corgi.name %></h4><img src="<%= corgi.profile_img %>" class="pic" /></li>
+      <% end %>
     </ul>
   </div>
 </div>
-<div>
+
+<div class="row">
   <%= link_to 'New Corgi', new_corgi_path %>
 </div>

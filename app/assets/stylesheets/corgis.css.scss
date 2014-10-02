@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  color: $primary_color;
+}
+
+ul { list-style: none; }
+.hidden { display: none; }
+
+#candidates { text-align: center; }
+#candidates .corgi.active .pic { width: 50%; }
+
+#misses .corgi .pic, #matches .corgi .pic {
+  width: 100px;
+  height: 100px;
+}
